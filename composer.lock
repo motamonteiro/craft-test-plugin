@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0bf13ad21b51e65cbc0d53dd656465a8",
+    "content-hash": "ff8fa918fc9948eae36e73db32e3ec39",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2021,6 +2021,57 @@
                 }
             ],
             "time": "2024-04-12T21:02:21+00:00"
+        },
+        {
+            "name": "motamonteiro/craft-entry-explorer",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "plugins/entry-explorer",
+                "reference": "3a94616131b2001391a814d5a5a214ab2f463df0"
+            },
+            "require": {
+                "craftcms/cms": "^5.2.0",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "craftcms/ecs": "dev-main",
+                "craftcms/phpstan": "dev-main"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "handle": "entry-explorer",
+                "name": "Entry Explorer",
+                "developer": "Alexandre Monteiro",
+                "documentationUrl": "",
+                "class": "motamonteiro\\craftentryexplorer\\EntryExplorer"
+            },
+            "autoload": {
+                "psr-4": {
+                    "motamonteiro\\craftentryexplorer\\": "src/"
+                }
+            },
+            "scripts": {
+                "check-cs": [
+                    "ecs check --ansi"
+                ],
+                "fix-cs": [
+                    "ecs check --ansi --fix"
+                ],
+                "phpstan": [
+                    "phpstan --memory-limit=1G"
+                ]
+            },
+            "license": [
+                "mit"
+            ],
+            "description": "Check the content of the fields have better control and awareness of everything that is being used in the project, this way we can better cover the tests and be safer about possible changes to everything involving the entry (entry, section, fields, blocks, etc.). It is also very useful for redesign/facelift projects.",
+            "support": {
+                "email": "motamonteiro@gmail.com"
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "paragonie/constant_time_encoding",
