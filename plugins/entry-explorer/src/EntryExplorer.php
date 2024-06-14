@@ -20,6 +20,7 @@ class EntryExplorer extends Plugin
 {
     public string $schemaVersion = '1.0.0';
     public bool $hasCpSettings = true;
+    public bool $hasCpSection = true;
 
     public static function config(): array
     {
@@ -35,7 +36,7 @@ class EntryExplorer extends Plugin
         parent::init();
 
         // Defer most setup tasks until Craft is fully initialized
-        Craft::$app->onInit(function() {
+        Craft::$app->onInit(function () {
             $this->attachEventHandlers();
             // ...
         });
@@ -48,7 +49,7 @@ class EntryExplorer extends Plugin
 
     protected function settingsHtml(): ?string
     {
-        return Craft::$app->view->renderTemplate('entry-explorer/_settings.twig', [
+        return Craft::$app->view->renderTemplate('entry-explorer/settings.twig', [
             'plugin' => $this,
             'settings' => $this->getSettings(),
         ]);
