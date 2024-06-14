@@ -10,7 +10,8 @@ use craft\db\ActiveRecord;
 
 /**
  * @property int $id
- * @property string $message
+ * @property int $entryId
+ * @property bool $hasEmptyFields
  */
 class EntryExplorerRecord extends ActiveRecord
 {

@@ -4,6 +4,7 @@ namespace motamonteiro\craftentryexplorer\migrations;
 
 use Craft;
 use craft\db\Migration;
+use craft\db\Table;
 use motamonteiro\craftentryexplorer\records\EntryExplorerRecord;
 
 /**
@@ -19,11 +20,16 @@ class Install extends Migration
         if (!$this->db->tableExists(EntryExplorerRecord::tableName())) {
             $this->createTable(EntryExplorerRecord::tableName(), [
                 'id' => $this->primaryKey(),
-                'message' => $this->string()->notNull(),
+                'entryId' => $this->integer()->notNull(),
+                'hasEmptyFields' => $this->boolean()->notNull(),
                 'dateCreated' => $this->dateTime()->notNull(),
                 'dateUpdated' => $this->dateTime()->notNull(),
                 'uid' => $this->uid(),
             ]);
+
+            $this->createIndex(null, EntryExplorerRecord::tableName(), 'entryId', true);
+
+            $this->addForeignKey(null, EntryExplorerRecord::tableName(), 'entryId', Table::ELEMENTS, 'id', 'CASCADE');
 
             // Refresh the db schema caches
             Craft::$app->db->schema->refresh();

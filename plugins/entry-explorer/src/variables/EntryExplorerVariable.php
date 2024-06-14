@@ -6,24 +6,25 @@
 
 namespace motamonteiro\craftentryexplorer\variables;
 
+use craft\elements\db\EntryQuery;
 use motamonteiro\craftentryexplorer\EntryExplorer;
 use motamonteiro\craftentryexplorer\models\EntryExplorerModel;
 
 class EntryExplorerVariable
 {
     /**
-     * Get Hello World message
+     * Returns processed entries
      */
-    public function getHelloWorldMessage(): EntryExplorerModel
+    public function getEntries(): EntryQuery
     {
-        return EntryExplorer::$plugin->entryExplorer->getHelloWorldMessage();
+        return EntryExplorer::$plugin->entryExplorer->getEntries();
     }
 
     /**
-     * Add Hello World message
+     * Returns Entry Explorer Fields
      */
-    public function addHelloWorldMessage(string $message): EntryExplorerModel
+    public function getEntryExplorerFields(int $entryId): EntryExplorerModel
     {
-        return EntryExplorer::$plugin->entryExplorer->addHelloWorldMessage($message);
+        return EntryExplorer::$plugin->entryExplorer->getEntryExplorerFields($entryId);
     }
 }

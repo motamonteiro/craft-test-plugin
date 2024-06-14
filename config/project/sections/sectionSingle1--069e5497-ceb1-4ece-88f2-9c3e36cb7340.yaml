@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - be6231d8-44a5-4a48-b47a-9c079788a05f # Entry 1
+handle: sectionSingle1
+maxAuthors: 1
+name: 'Section Single 1'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  ef9a3e8f-0b5d-446e-93a3-28aa6505786c: # Test Plugin
+    enabledByDefault: true
+    hasUrls: true
+    template: section-single-1/_entry
+    uriFormat: section-single-1
+type: single

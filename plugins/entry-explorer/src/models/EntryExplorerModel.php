@@ -18,9 +18,14 @@ class EntryExplorerModel extends Model
     public ?int $id = null;
 
     /**
-     * @var string
+     * @var int|null
      */
-    public ?string $message = null;
+    public ?int $entryId = null;
+
+    /**
+     * @var bool
+     */
+    public bool $hasEmptyFields;
 
     /**
      * @var DateTime|null
@@ -44,7 +49,8 @@ class EntryExplorerModel extends Model
     {
         $rules = parent::rules();
 
-        $rules[] = [['message'], 'string'];
+        $rules[] = [['entryId'], 'number'];
+        $rules[] = [['hasEmptyFields'], 'boolean'];
         $rules[] = [['dateCreated', 'dateUpdated'], DateTimeValidator::class];
 
         return $rules;

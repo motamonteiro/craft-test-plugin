@@ -9,6 +9,7 @@ namespace motamonteiro\craftentryexplorer\services;
 use Craft;
 use craft\base\Component;
 use craft\elements\db\EntryQuery;
+use craft\elements\Entry;
 use motamonteiro\craftentryexplorer\models\EntryExplorerModel;
 use motamonteiro\craftentryexplorer\records\EntryExplorerRecord;
 
@@ -17,43 +18,49 @@ use motamonteiro\craftentryexplorer\records\EntryExplorerRecord;
  */
 class EntryExplorerService extends Component
 {
-
     /**
-     * Get Hello World message
+     * Returns processed entries
      */
-    public function getHelloWorldMessage(): EntryExplorerModel
+    public function getEntries(): EntryQuery
     {
-        // Create a new model
-        $model = new EntryExplorerModel();
+        // Get all records from DB ordered by entryId ascending
+        /** @var EntryExplorerRecord[] $entryExplorerRecords */
+        $entryExplorerRecords = EntryExplorerRecord::find()
+            ->orderBy('entryId asc')
+            ->all();
 
-        // Get all records from DB ordered by message
-        $record = EntryExplorerRecord::find()
-            ->orderBy(['message' => SORT_ASC])
-            ->one();
+        // Get entry ids from records
+        $entryIds = [];
 
-        if ($record) {
-            $attributes = $record->getAttributes();
-            $model->setAttributes($attributes);
+        foreach ($entryExplorerRecords as $entryExplorerRecord) {
+            $entryIds[] = $entryExplorerRecord->entryId;
         }
 
-        return $model;
+        // Return entry query
+        return Entry::find()
+            ->id($entryIds)
+            ->fixedOrder();
     }
 
     /**
-     * Add Hello World message
+     * Returns Entry Explorer Fields
      */
-    public function addHelloWorldMessage($message): EntryExplorerModel
+    public function getEntryExplorerFields(int $entryId): EntryExplorerModel
     {
-        // Create a new record and save the message
-        $record = new EntryExplorerRecord();
-        $record->message = $message;
-        $record->save();
+        // Create new model
+        $entryExplorerModel = new EntryExplorerModel();
 
-        // Create a new model
-        $model = new EntryExplorerModel();
-        $attributes = $record->getAttributes();
-        $model->setAttributes($attributes);
+        // Get record from database
+        $entryExplorerRecord = EntryExplorerRecord::find()
+            ->where(['entryId' => $entryId])
+            ->one();
 
-        return $model;
+        if ($entryExplorerRecord) {
+            // populate model from record
+            $entryExplorerModel->hasEmptyFields = $entryExplorerRecord->hasEmptyFields;
+        }
+
+        // Return
+        return $entryExplorerModel;
     }
 }

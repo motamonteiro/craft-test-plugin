@@ -1,10 +1,13 @@
-dateModified: 1718383340
+dateModified: 1718395611
 email:
   fromEmail: motamonteiro@gmail.com
   fromName: 'Test Plugin'
   transportType: craft\mail\transportadapters\Sendmail
 meta:
   __names__:
+    069e5497-ceb1-4ece-88f2-9c3e36cb7340: 'Section Single 1' # Section Single 1
+    204f3604-5373-479e-94cb-ee223e28daae: 'Field 1' # Field 1
+    be6231d8-44a5-4a48-b47a-9c079788a05f: 'Entry 1' # Entry 1
     ca1295fa-55d9-492f-8dc9-c510f11bfe0c: 'Test Plugin' # Test Plugin
     ef9a3e8f-0b5d-446e-93a3-28aa6505786c: 'Test Plugin' # Test Plugin
 plugins:
