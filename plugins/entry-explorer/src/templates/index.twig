@@ -2,8 +2,12 @@
 
 {% set title = "Entry Explorer"|t('entry-explorer') %}
 
+{% set helloWorldMessage = craft.entryExplorer.helloWorldMessage %}
+
 {% block content %}
 
 Hello from Entry Explorer.
+<hr>
+{{ helloWorldMessage }}
 
 {% endblock %}

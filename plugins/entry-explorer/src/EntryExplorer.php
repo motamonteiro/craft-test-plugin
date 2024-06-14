@@ -5,7 +5,10 @@ namespace motamonteiro\craftentryexplorer;
 use Craft;
 use craft\base\Model;
 use craft\base\Plugin;
+use craft\web\twig\variables\CraftVariable;
 use motamonteiro\craftentryexplorer\models\Settings;
+use motamonteiro\craftentryexplorer\variables\EntryExplorerVariable;
+use yii\base\Event;
 
 /**
  * Entry Explorer plugin
@@ -34,6 +37,13 @@ class EntryExplorer extends Plugin
     public function init(): void
     {
         parent::init();
+
+        // Register variable
+        Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function (Event $event) {
+            /** @var CraftVariable $variable */
+            $variable = $event->sender;
+            $variable->set('entryExplorer', EntryExplorerVariable::class);
+        });
 
         // Defer most setup tasks until Craft is fully initialized
         Craft::$app->onInit(function () {
