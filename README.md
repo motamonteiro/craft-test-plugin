@@ -1,6 +1,6 @@
 # Test Plugin site
 
-Site to test to help on development of the Entry Explorer plugin
+Site to help on development of the Entry Explorer plugin
 
 ## DDEV Installation
 
