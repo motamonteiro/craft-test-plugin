@@ -2,12 +2,16 @@
 
 {% set title = "Entry Explorer"|t('entry-explorer') %}
 
-{% set helloWorldMessage = craft.entryExplorer.helloWorldMessage %}
+{% set entryExplorerModel = craft.entryExplorer.helloWorldMessage %}
+
+{% if entryExplorerModel.message is null %}
+    {% set entryExplorerModel = craft.entryExplorer.addHelloWorldMessage('Hello from Entry Explorer database.') %}
+{% endif %}
 
 {% block content %}
 
 Hello from Entry Explorer.
 <hr>
-{{ helloWorldMessage }}
+{{ entryExplorerModel.message }}
 
 {% endblock %}
