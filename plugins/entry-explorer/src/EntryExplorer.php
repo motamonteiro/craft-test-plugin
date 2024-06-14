@@ -7,6 +7,7 @@ use craft\base\Model;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
 use motamonteiro\craftentryexplorer\models\Settings;
+use motamonteiro\craftentryexplorer\services\EntryExplorerService;
 use motamonteiro\craftentryexplorer\variables\EntryExplorerVariable;
 use yii\base\Event;
 
@@ -21,6 +22,11 @@ use yii\base\Event;
  */
 class EntryExplorer extends Plugin
 {
+    /**
+     * @var EntryExplorer
+     */
+    public static EntryExplorer $plugin;
+
     public string $schemaVersion = '1.0.0';
     public bool $hasCpSettings = true;
     public bool $hasCpSection = true;
@@ -29,7 +35,7 @@ class EntryExplorer extends Plugin
     {
         return [
             'components' => [
-                // Define component configs here...
+                'entryExplorer' => ['class' => EntryExplorerService::class],
             ],
         ];
     }
@@ -37,6 +43,7 @@ class EntryExplorer extends Plugin
     public function init(): void
     {
         parent::init();
+        self::$plugin = $this;
 
         // Register variable
         Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function (Event $event) {

@@ -6,6 +6,8 @@
 
 namespace motamonteiro\craftentryexplorer\variables;
 
+use motamonteiro\craftentryexplorer\EntryExplorer;
+
 class EntryExplorerVariable
 {
     /**
@@ -13,6 +15,6 @@ class EntryExplorerVariable
      */
     public function getHelloWorldMessage(): string
     {
-        return "Hello World from Entry Explorer Variable!";
+        return EntryExplorer::$plugin->entryExplorer->getHelloWorldMessage();
     }
 }
