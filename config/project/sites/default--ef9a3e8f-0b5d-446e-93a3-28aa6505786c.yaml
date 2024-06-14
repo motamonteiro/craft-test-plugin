@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: 'Test Plugin'
+primary: true
+siteGroup: ca1295fa-55d9-492f-8dc9-c510f11bfe0c # Test Plugin
+sortOrder: 1
