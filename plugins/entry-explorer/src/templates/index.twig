@@ -11,13 +11,15 @@
             <thead>
                 <tr>
                     <th>{{ "Entry ID"|t('entry-explorer') }}</th>
-                    <th>{{ "Entry"|t('entry-explorer') }}</th>
                     <th>{{ "Entry Type Handle"|t('entry-explorer') }}</th>
+                    <th>{{ "Entry Type Name"|t('entry-explorer') }}</th>
+                    <th>{{ "Entry Title"|t('entry-explorer') }}</th>
+                    <th>{{ "Section"|t('entry-explorer') }}</th>
                     <th>{{ "URL"|t('entry-explorer') }}</th>
+                    <th>{{ "Fields"|t('entry-explorer') }}</th>
                     <th>{{ "Empty Fields"|t('entry-explorer') }}</th>
                     <th>{{ "First Check"|t('entry-explorer') }}</th>
                     <th>{{ "Last Check"|t('entry-explorer') }}</th>
-                    <th>{{ "Fields"|t('entry-explorer') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,12 +33,16 @@
                         </a>
                     </td>
                     <td>
-                        <a href="{{ url('entries/' ~ entry.section.handle ~ '/' ~ entry.id ~ '-' ~ entry.slug) }}">
-                            {{ entry.title }}
-                        </a>
+                        {{ entry.type }}
                     </td>
                     <td>
-                        {{ entry.type }}
+                        {{ entry.type.name }}
+                    </td>
+                    <td>
+                        {{ entry.title }}
+                    </td>
+                    <td>
+                        {{ entry.section }}
                     </td>
                     <td>
                         {% if entry.url %}
@@ -46,6 +52,15 @@
                         {% endif %}
                     </td>
                     <td>
+                        <span class="status-label teal">field1</span>
+                        <span class="status-label red">field2</span>
+                        <span class="status-label teal">field3</span>
+                        <span class="status-label teal">field4</span>
+                        <span class="status-label teal">field5</span>
+                        <span class="status-label teal">field6</span>
+                        <span class="status-label red">field7</span>
+                    </td>
+                    <td>
                         {{ entryExplorerFields.hasEmptyFields ? 'Yes' : 'No' }}
                     </td>
                     <td>
@@ -53,9 +68,6 @@
                     </td>
                     <td>
                         {{ entryExplorerFields.dateUpdated|datetime }}
-                    </td>
-                    <td>
-                        fields here
                     </td>
                 </tr>
             {% endfor %}
