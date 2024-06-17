@@ -3,9 +3,13 @@
 namespace motamonteiro\craftentryexplorer;
 
 use Craft;
+use craft\base\Element;
 use craft\base\Model;
 use craft\base\Plugin;
+use craft\elements\Entry;
+use craft\events\DefineBehaviorsEvent;
 use craft\web\twig\variables\CraftVariable;
+use motamonteiro\craftentryexplorer\behaviors\EntryExplorerBehavior;
 use motamonteiro\craftentryexplorer\models\Settings;
 use motamonteiro\craftentryexplorer\services\EntryExplorerService;
 use motamonteiro\craftentryexplorer\variables\EntryExplorerVariable;
@@ -50,6 +54,14 @@ class EntryExplorer extends Plugin
             /** @var CraftVariable $variable */
             $variable = $event->sender;
             $variable->set('entryExplorer', EntryExplorerVariable::class);
+        });
+
+        Event::on(Element::class, Element::EVENT_DEFINE_BEHAVIORS, function (DefineBehaviorsEvent $event) {
+            /** @var Element $element */
+            $element = $event->sender;
+            if ($element instanceof Entry) {
+                $event->behaviors['entryExplorer'] = EntryExplorerBehavior::class;
+            }
         });
 
         // Defer most setup tasks until Craft is fully initialized

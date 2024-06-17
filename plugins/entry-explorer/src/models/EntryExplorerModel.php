@@ -23,9 +23,9 @@ class EntryExplorerModel extends Model
     public ?int $entryId = null;
 
     /**
-     * @var bool
+     * @var string|null
      */
-    public bool $hasEmptyFields;
+    public ?string $usedFields = null;
 
     /**
      * @var DateTime|null
@@ -50,7 +50,7 @@ class EntryExplorerModel extends Model
         $rules = parent::rules();
 
         $rules[] = [['entryId'], 'number'];
-        $rules[] = [['hasEmptyFields'], 'boolean'];
+        $rules[] = [['usedFields'], 'string'];
         $rules[] = [['dateCreated', 'dateUpdated'], DateTimeValidator::class];
 
         return $rules;

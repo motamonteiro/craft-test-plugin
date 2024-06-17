@@ -21,7 +21,7 @@ class Install extends Migration
             $this->createTable(EntryExplorerRecord::tableName(), [
                 'id' => $this->primaryKey(),
                 'entryId' => $this->integer()->notNull(),
-                'hasEmptyFields' => $this->boolean()->notNull(),
+                'usedFields' => $this->string(),
                 'dateCreated' => $this->dateTime()->notNull(),
                 'dateUpdated' => $this->dateTime()->notNull(),
                 'uid' => $this->uid(),

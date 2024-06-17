@@ -8,8 +8,10 @@ namespace motamonteiro\craftentryexplorer\services;
 
 use Craft;
 use craft\base\Component;
+use craft\elements\db\ElementQuery;
 use craft\elements\db\EntryQuery;
 use craft\elements\Entry;
+use craft\events\CancelableEvent;
 use motamonteiro\craftentryexplorer\models\EntryExplorerModel;
 use motamonteiro\craftentryexplorer\records\EntryExplorerRecord;
 
@@ -19,48 +21,74 @@ use motamonteiro\craftentryexplorer\records\EntryExplorerRecord;
 class EntryExplorerService extends Component
 {
     /**
-     * Returns processed entries
+     * Returns entries to be explored
      */
     public function getEntries(): EntryQuery
     {
-        // Get all records from DB ordered by entryId ascending
-        /** @var EntryExplorerRecord[] $entryExplorerRecords */
-        $entryExplorerRecords = EntryExplorerRecord::find()
-            ->orderBy('entryId asc')
-            ->all();
+        $entryQuery = Entry::find();
 
-        // Get entry ids from records
-        $entryIds = [];
+        $entryQuery->on(ElementQuery::EVENT_BEFORE_PREPARE, function (CancelableEvent $event) {
+            /** @var ElementQuery $query */
+            $query = $event->sender;
+            $query->addSelect(['usedFields']);
+            $query->innerJoin(EntryExplorerRecord::tableName(), 'entryId = elements.id');
+        });
 
-        foreach ($entryExplorerRecords as $entryExplorerRecord) {
-            $entryIds[] = $entryExplorerRecord->entryId;
+        return $entryQuery;
+    }
+    public function importPluginData(): void
+    {
+        //Get all entries
+        foreach (Entry::find()->all() ?? [] as $entry) {
+
+            $entryExplorerRecord = EntryExplorerRecord::find()
+                ->where(['entryId' => $entry->id])
+                ->one();
+
+            if (!$entryExplorerRecord) {
+                $entryExplorerRecord = new EntryExplorerRecord();
+            }
+
+            $entryExplorerRecord->entryId = $entry->id;
+            $entryExplorerRecord->usedFields = null;
+            $entryExplorerRecord->save();
+
+            $this->importUsedFields($entry);
         }
-
-        // Return entry query
-        return Entry::find()
-            ->id($entryIds)
-            ->fixedOrder();
     }
 
-    /**
-     * Returns Entry Explorer Fields
-     */
-    public function getEntryExplorerFields(int $entryId): EntryExplorerModel
+    private function importUsedFields(Entry $entry): void
     {
-        // Create new model
-        $entryExplorerModel = new EntryExplorerModel();
-
-        // Get record from database
+        // Get record from database to save the fields data
         $entryExplorerRecord = EntryExplorerRecord::find()
-            ->where(['entryId' => $entryId])
+            ->where(['entryId' => $entry->id])
             ->one();
 
-        if ($entryExplorerRecord) {
-            // populate model from record
-            $entryExplorerModel->hasEmptyFields = $entryExplorerRecord->hasEmptyFields;
+        if (!$entryExplorerRecord) {
+            return;
         }
 
-        // Return
-        return $entryExplorerModel;
+        try {
+            // Filter out empty fields from the entry's serialized values
+            $entryFields = array_filter($entry->getSerializedFieldValues() ?? []);
+        } catch (\Exception $e) {
+            $entryFields = [];
+        }
+
+        // Initialize array to store used fields
+        $usedFields = [];
+
+        // Add title field if it exists and is not empty
+        if (isset($entry->title) && !empty($entry->title)) {
+            $usedFields[] = 'title';
+        }
+
+        // Loop through entry fields to extract field names and block types
+        foreach ($entryFields as $fieldName => $fieldValue) {
+            $usedFields[] = $fieldName;
+        }
+
+        $entryExplorerRecord->usedFields = implode(';', $usedFields);
+        $entryExplorerRecord->save();
     }
 }

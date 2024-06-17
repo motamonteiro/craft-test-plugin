@@ -21,10 +21,10 @@ class EntryExplorerVariable
     }
 
     /**
-     * Returns Entry Explorer Fields
+     * Import Plugin Data
      */
-    public function getEntryExplorerFields(int $entryId): EntryExplorerModel
+    public function importPluginData(): void
     {
-        return EntryExplorer::$plugin->entryExplorer->getEntryExplorerFields($entryId);
+        EntryExplorer::$plugin->entryExplorer->importPluginData();
     }
 }
