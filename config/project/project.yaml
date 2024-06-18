@@ -1,14 +1,29 @@
-dateModified: 1718661213
+dateModified: 1718670070
 email:
   fromEmail: motamonteiro@gmail.com
   fromName: 'Test Plugin'
   transportType: craft\mail\transportadapters\Sendmail
+fs:
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@webroot/assets/images'
+    type: craft\fs\Local
+    url: '@web/assets/images'
 meta:
   __names__:
+    5f531d0d-7a3d-4809-9a06-c8f2c8d2ce46: 'Block Builder' # Block Builder
+    18c0c988-558c-4019-bdde-b416c46dcb62: 'Image Link Card' # Image Link Card
     069e5497-ceb1-4ece-88f2-9c3e36cb7340: 'Section Single 1' # Section Single 1
     204f3604-5373-479e-94cb-ee223e28daae: 'Field 1' # Field 1
+    742d9cea-0278-4329-968a-b0b97382c80b: 'Entry 2' # Entry 2
+    677603c4-b944-4c60-98b5-bd01cd44d877: 'Public Schema' # Public Schema
+    b35b559c-778a-445e-b66b-74898206bbb4: 'Image Link Card' # Image Link Card
     be6231d8-44a5-4a48-b47a-9c079788a05f: 'Entry 1' # Entry 1
     ca1295fa-55d9-492f-8dc9-c510f11bfe0c: 'Test Plugin' # Test Plugin
+    d8ba492d-364e-4eab-b552-d240be77b36e: 'Section Single 2' # Section Single 2
+    ec1c7424-3e7a-480f-afc5-ad702ea52bd4: Image # Image
     ef9a3e8f-0b5d-446e-93a3-28aa6505786c: 'Test Plugin' # Test Plugin
 plugins:
   entry-explorer:

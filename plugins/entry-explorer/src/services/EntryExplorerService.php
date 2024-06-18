@@ -12,7 +12,6 @@ use craft\elements\db\ElementQuery;
 use craft\elements\db\EntryQuery;
 use craft\elements\Entry;
 use craft\events\CancelableEvent;
-use motamonteiro\craftentryexplorer\models\EntryExplorerModel;
 use motamonteiro\craftentryexplorer\records\EntryExplorerRecord;
 
 /**
@@ -83,9 +82,26 @@ class EntryExplorerService extends Component
             $usedFields[] = 'title';
         }
 
+        $matrixFields = [];
+        foreach (Craft::$app->fields->getAllFields() as $field) {
+            if ($field instanceof \craft\fields\Matrix) {
+                $matrixFields[] = $field->handle;
+            }
+        }
+
         // Loop through entry fields to extract field names and block types
         foreach ($entryFields as $fieldName => $fieldValue) {
-            $usedFields[] = $fieldName;
+
+            if (in_array($fieldName, $matrixFields)) {
+                foreach ($fieldValue as $block) {
+                    // Extract block type and add to used fields
+                    $blockType = $block['type'] ?? '{{empty}}';
+                    $usedFields[] = "{$fieldName}.{$blockType}";
+                }
+            } else {
+                // Add non-matrix field to used fields
+                $usedFields[] = $fieldName;
+            }
         }
 
         $entryExplorerRecord->usedFields = implode(';', $usedFields);

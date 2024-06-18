@@ -1,6 +1,6 @@
 color: null
 fieldLayouts:
-  5b128e23-df83-410d-b954-f1d0fd24881e:
+  67823bf4-b8aa-41fd-9ac2-28f3e4a7e4c2:
     tabs:
       -
         elementCondition: null
@@ -30,13 +30,13 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 89107b46-4f52-41c8-8b67-3bf0150d08f6
+            uid: b216b181-3b5f-4acd-9a58-398daafce66c
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: 204f3604-5373-479e-94cb-ee223e28daae # Field 1
+            fieldUid: 18c0c988-558c-4019-bdde-b416c46dcb62 # Image Link Card
             handle: null
             includeInCards: false
             instructions: null
@@ -45,32 +45,17 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e8553a09-590a-4b6f-bc28-10c5ec113166
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: 5f531d0d-7a3d-4809-9a06-c8f2c8d2ce46 # Block Builder
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: b02addcc-b926-42e7-90f0-7e29630b4f07
+            uid: 1460426a-8200-408a-845e-d1cc9af60028
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: d739d9ed-ae18-476b-a8df-91f4fafb50eb
+        uid: d12e6fdb-cb4d-44bb-888d-57ad86c51b1a
         userCondition: null
-handle: entry1
+handle: imageLinkCard
 hasTitleField: true
 icon: ''
-name: 'Entry 1'
+name: 'Image Link Card'
 showSlugField: true
 showStatusField: true
 slugTranslationKeyFormat: null

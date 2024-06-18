@@ -32,7 +32,7 @@ class EntryExplorer extends Plugin
     public static EntryExplorer $plugin;
 
     public string $schemaVersion = '1.0.0';
-    public bool $hasCpSettings = true;
+    public bool $hasCpSettings = false;
     public bool $hasCpSection = true;
 
     public static function config(): array

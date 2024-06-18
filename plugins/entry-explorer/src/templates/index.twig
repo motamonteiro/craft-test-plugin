@@ -4,7 +4,7 @@
 
 {% do craft.entryExplorer.importPluginData() %}
 
-{% set entries = craft.entryExplorer.entries.all() %}
+{% set entries = craft.entryExplorer.entries.orderBy('entryId').all() %}
 
 {% block content %}
     
@@ -23,38 +23,40 @@
             </thead>
             <tbody>
             {% for entry in entries %}
-                {% set usedFields = entry.usedFields|split(';') %}
-                <tr>
-                    <td>
-                        <a href="{{ url('entries/' ~ entry.section.handle ~ '/' ~ entry.id ~ '-' ~ entry.slug) }}">
-                            {{ entry.id }}
-                        </a>
-                    </td>
-                    <td>
-                        {{ entry.type }}
-                    </td>
-                    <td>
-                        {{ entry.type.name }}
-                    </td>
-                    <td>
-                        {{ entry.title }}
-                    </td>
-                    <td>
-                        {{ entry.section }}
-                    </td>
-                    <td>
-                        {% if entry.url %}
-                            <a href="{{ entry.url }}" class="go" target="_blank">
-                                {{- entry.uri == '__home__' ? '/' : entry.uri -}}
+                {% set section = entry.section %}
+                {% if section.handle ?? false  %}
+                    <tr>
+                        <td>
+                            <a href="{{ url('entries/' ~ entry.section.handle ~ '/' ~ entry.id ~ '-' ~ entry.slug) }}">
+                                {{ entry.id }}
                             </a>
-                        {% endif %}
-                    </td>
-                    <td>
-                    {% for field in usedFields %}
-                        <span class="status-label teal">{{ field }}</span>
-                    {% endfor %}
-                    </td>
-                </tr>
+                        </td>
+                        <td>
+                            {{ entry.type }}
+                        </td>
+                        <td>
+                            {{ entry.type.name }}
+                        </td>
+                        <td>
+                            {{ entry.title }}
+                        </td>
+                        <td>
+                            {{ entry.section }}
+                        </td>
+                        <td>
+                            {% if entry.url %}
+                                <a href="{{ entry.url }}" class="go" target="_blank">
+                                    {{- entry.uri == '__home__' ? '/' : entry.uri -}}
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
+                        {% for field in entry.usedFields|split(';') %}
+                            <span class="status-label teal">{{ field }}</span>
+                        {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
             {% endfor %}
             </tbody>
         </table>

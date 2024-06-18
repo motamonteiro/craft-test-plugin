@@ -1,0 +1,21 @@
+columnSuffix: null
+handle: blockBuilder
+instructions: null
+name: 'Block Builder'
+searchable: false
+settings:
+  createButtonLabel: null
+  entryTypes:
+    - be6231d8-44a5-4a48-b47a-9c079788a05f # Entry 1
+    - b35b559c-778a-445e-b66b-74898206bbb4 # Image Link Card
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
