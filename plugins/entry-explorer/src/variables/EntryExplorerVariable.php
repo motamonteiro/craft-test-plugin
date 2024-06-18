@@ -8,7 +8,6 @@ namespace motamonteiro\craftentryexplorer\variables;
 
 use craft\elements\db\EntryQuery;
 use motamonteiro\craftentryexplorer\EntryExplorer;
-use motamonteiro\craftentryexplorer\models\EntryExplorerModel;
 
 class EntryExplorerVariable
 {

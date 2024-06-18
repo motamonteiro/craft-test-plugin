@@ -23,6 +23,8 @@ use yii\base\Event;
  * @author Alexandre Monteiro <motamonteiro@gmail.com>
  * @copyright Alexandre Monteiro
  * @license MIT
+ * @property-read EntryExplorerService $entryExplorer
+ * @property-read SettingsModel $settings
  */
 class EntryExplorer extends Plugin
 {
@@ -31,8 +33,19 @@ class EntryExplorer extends Plugin
      */
     public static EntryExplorer $plugin;
 
+    /**
+     * @inheritdoc
+     */
     public string $schemaVersion = '1.0.0';
+
+    /**
+     * @inheritdoc
+     */
     public bool $hasCpSettings = false;
+
+    /**
+     * @inheritdoc
+     */
     public bool $hasCpSection = true;
 
     public static function config(): array
@@ -71,11 +84,17 @@ class EntryExplorer extends Plugin
         });
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function createSettingsModel(): ?Model
     {
         return Craft::createObject(Settings::class);
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function settingsHtml(): ?string
     {
         return Craft::$app->view->renderTemplate('entry-explorer/settings.twig', [

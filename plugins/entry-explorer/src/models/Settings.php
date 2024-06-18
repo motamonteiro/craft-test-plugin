@@ -10,4 +10,13 @@ use craft\base\Model;
  */
 class Settings extends Model
 {
+    /**
+     * @var bool
+     */
+    public bool $ignoreLoggedInUsers = false;
+
+    /**
+     * @var string
+     */
+    public string $ignoreIpAddresses = '';
 }
