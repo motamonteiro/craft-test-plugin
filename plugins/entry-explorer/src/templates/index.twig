@@ -60,6 +60,11 @@
             {% endfor %}
             </tbody>
         </table>
+        <form action="" method="post">
+            {{ csrfInput() }}
+            {{ actionInput('entry-explorer/entry-explorer/reset') }}
+            <input type="submit" value="{{ 'Reset'|t('craft-entry-explorer') }}" class="btn submit">
+        </form>
     {% else %}
         {{ "No entries processed yet"|t('entry-explorer') }}
     {% endif %}
