@@ -3,7 +3,7 @@
   "prefer-stable": true,
   "require": {
     "craftcms/cms": "5.2.1",
-    "motamonteiro/craft-entry-explorer": "dev-main",
+    "motamonteiro/craft-entry-explorer": "0.0.*",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
@@ -32,10 +32,6 @@
     ]
   },
   "repositories": [
-    {
-      "type": "path",
-      "url": "plugins/entry-explorer"
-    },
     {
       "type": "composer",
       "url": "https://composer.craftcms.com",
