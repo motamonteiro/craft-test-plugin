@@ -69,12 +69,12 @@ fieldLayouts:
         userCondition: null
 handle: entry1
 hasTitleField: true
-icon: ''
+icon: null
 name: 'Entry 1'
 showSlugField: true
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site
-titleFormat: ''
+titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site

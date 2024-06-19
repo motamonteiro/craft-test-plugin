@@ -54,12 +54,12 @@ fieldLayouts:
         userCondition: null
 handle: imageLinkCard
 hasTitleField: true
-icon: ''
+icon: null
 name: 'Image Link Card'
 showSlugField: true
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site
-titleFormat: ''
+titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site

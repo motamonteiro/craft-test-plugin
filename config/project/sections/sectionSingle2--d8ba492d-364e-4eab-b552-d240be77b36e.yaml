@@ -12,11 +12,11 @@ previewTargets:
         - label
         - 'Primary entry page'
       -
-        - urlFormat
-        - '{url}'
-      -
         - refresh
         - '1'
+      -
+        - urlFormat
+        - '{url}'
 propagationMethod: all
 siteSettings:
   ef9a3e8f-0b5d-446e-93a3-28aa6505786c: # Test Plugin
