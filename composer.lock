@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9619181760f8dcfa45a84509096c82d4",
+    "content-hash": "8001babae6e0b5ebc7fe72c5abcaba1a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -233,11 +233,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "5.2.1",
+            "version": "5.2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/9beea769b1dfa4c9c4bff38f7af5da9f4e96cbe9",
-                "reference": "9beea769b1dfa4c9c4bff38f7af5da9f4e96cbe9",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/68a250eef09b13534a8ecc0af8c51d33e3f069a3",
+                "reference": "68a250eef09b13534a8ecc0af8c51d33e3f069a3",
                 "shasum": ""
             },
             "require": {
@@ -337,7 +337,7 @@
                 "docs": "https://craftcms.com/docs/5.x/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2024-06-17T20:10:48+00:00"
+            "time": "2024-06-18T22:13:24+00:00"
         },
         {
             "name": "craftcms/plugin-installer",
@@ -1431,17 +1431,11 @@
         },
         {
             "name": "motamonteiro/craft-entry-explorer",
-            "version": "0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/motamonteiro/craft-entry-explorer.git",
-                "reference": "6b20371b1a3b75ca008c8f24024bf97d202be216"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/motamonteiro/craft-entry-explorer/zipball/6b20371b1a3b75ca008c8f24024bf97d202be216",
-                "reference": "6b20371b1a3b75ca008c8f24024bf97d202be216",
-                "shasum": ""
+                "type": "path",
+                "url": "/mnt/craft-entry-explorer",
+                "reference": "00e4fbb82ec0814e9519ef643d0771cd5d0658cf"
             },
             "require": {
                 "craftcms/cms": "^5.2.0",
@@ -1464,7 +1458,17 @@
                     "motamonteiro\\craftentryexplorer\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "check-cs": [
+                    "ecs check --ansi"
+                ],
+                "fix-cs": [
+                    "ecs check --ansi --fix"
+                ],
+                "phpstan": [
+                    "phpstan --memory-limit=1G"
+                ]
+            },
             "license": [
                 "mit"
             ],
@@ -1476,11 +1480,12 @@
             ],
             "description": "Check the content of the fields have better control and awareness of everything that is being used in the project, this way we can better cover the tests and be safer about possible changes to everything involving the entry (entry, section, fields, blocks, etc.). It is also very useful for redesign/facelift projects.",
             "support": {
-                "email": "motamonteiro@gmail.com",
-                "issues": "https://github.com/motamonteiro/craft-entry-explorer/issues",
-                "source": "https://github.com/motamonteiro/craft-entry-explorer/tree/0.0.3"
+                "email": "motamonteiro@gmail.com"
             },
-            "time": "2024-06-19T20:54:21+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": false
+            }
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -2926,11 +2931,6 @@
         {
             "name": "symfony/polyfill-ctype",
             "version": "v1.30.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "0424dff1c58f028c451efff2045f5d92410bd540"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/0424dff1c58f028c451efff2045f5d92410bd540",
@@ -2961,7 +2961,6 @@
                     "Symfony\\Polyfill\\Ctype\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2982,23 +2981,6 @@
                 "ctype",
                 "polyfill",
                 "portable"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.30.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2024-05-31T15:07:36+00:00"
         },
@@ -3085,11 +3067,6 @@
         {
             "name": "symfony/polyfill-intl-grapheme",
             "version": "v1.30.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "64647a7c30b2283f5d49b874d84a18fc22054b7a"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/64647a7c30b2283f5d49b874d84a18fc22054b7a",
@@ -3117,7 +3094,6 @@
                     "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3140,23 +3116,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.30.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2024-05-31T15:07:36+00:00"
         },
@@ -3328,11 +3287,6 @@
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.30.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "fd22ab50000ef01661e2a31d850ebaa297f8e03c"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fd22ab50000ef01661e2a31d850ebaa297f8e03c",
@@ -3363,7 +3317,6 @@
                     "Symfony\\Polyfill\\Mbstring\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3385,23 +3338,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.30.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2024-06-19T12:30:46+00:00"
         },
@@ -3561,11 +3497,6 @@
         {
             "name": "symfony/polyfill-uuid",
             "version": "v1.30.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-uuid.git",
-                "reference": "2ba1f33797470debcda07fe9dce20a0003df18e9"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/2ba1f33797470debcda07fe9dce20a0003df18e9",
@@ -3596,7 +3527,6 @@
                     "Symfony\\Polyfill\\Uuid\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3617,23 +3547,6 @@
                 "polyfill",
                 "portable",
                 "uuid"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-uuid/tree/v1.30.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2024-05-31T15:07:36+00:00"
         },

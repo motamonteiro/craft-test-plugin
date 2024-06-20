@@ -1,0 +1,5 @@
+version: '3.6'
+services:
+  web:
+    volumes:
+      - /Users/alexandre/Documents/www/github/motamonteiro/craft-entry-explorer:/mnt/craft-entry-explorer

@@ -2,8 +2,8 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "craftcms/cms": "5.2.1",
-    "motamonteiro/craft-entry-explorer": "0.0.*",
+    "craftcms/cms": "5.2.2",
+    "motamonteiro/craft-entry-explorer": "dev-main",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
@@ -32,6 +32,13 @@
     ]
   },
   "repositories": [
+    {
+      "type": "path",
+      "url": "/mnt/craft-entry-explorer",
+      "options": {
+        "symlink": true
+      }
+    },
     {
       "type": "composer",
       "url": "https://composer.craftcms.com",
